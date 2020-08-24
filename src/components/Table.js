@@ -8,7 +8,7 @@ const Table = (props) => {
                 <img src={props.children.picture}></img>
             </td>
             <td>{props.children.name}</td>
-            <td>{props.children.age}</td>
+            <td>{props.children.gender}</td>
             <td>{props.children.email}</td>
             <td>{props.children.country}</td>
         </tr >

@@ -4,6 +4,7 @@ import EmpDirectory from "./components/EmpDirectory";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Table from "./components/Table";
+import DropDownButtons from "./components/DropDownButtons";
 import axios from "axios";
 
 function App() { 
@@ -25,7 +26,7 @@ function App() {
 
           employeeArray.push({
             name: selectEmp.name.first + " " + selectEmp.name.last,
-            age: selectEmp.dob.age,
+            gender: selectEmp.gender,
             email: selectEmp.email,
             picture: selectEmp.picture.thumbnail,
             country:selectEmp.location.country
@@ -44,6 +45,15 @@ function App() {
     setSearch({ ...search, name: e.target.value });
   };
 
+  const [gendersearch, setGenderSearch] = useState({
+    gender: "",
+  });
+
+  const genSearch = (e) => {
+    setGenderSearch({ ...gendersearch, gender: e.target.value });
+    setEmp([...empGender]);
+  };
+
   const [employee, setEmp] = useState(employeeArray)
 
   const simEmp = employee.filter(function (emp) {
@@ -53,17 +63,33 @@ function App() {
       return emp
     }
   });
+
+  const empGender= employee.filter(function (emp) {
+    if (gendersearch.gender.length < 0) {
+      
+      return employee
+    } else if (emp.gender.includes(gendersearch.gender)){
+      console.log(emp.gender+gendersearch.gender);
+      return emp
+    } 
+  });
+  
   return (
     <div className="App">
      <Header/>
      <Search empSearch={empSearch}/>
+     <div className="container">
+     <h5 className="text">Filter By Gender</h5>
+    
+     <DropDownButtons text="male" value="male" genSearch={genSearch} />
+     </div>
 
      <table className="table mx-auto">
         <thead className="thead-light">
           <tr>
             <th scope="col"></th>
             <th scope="col">Name</th>
-            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
             <th scope="col">Email</th>
             <th scope="col">Country</th>
           </tr>
