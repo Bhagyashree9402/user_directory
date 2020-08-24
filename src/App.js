@@ -50,8 +50,11 @@ function App() {
   });
 
   const genSearch = (e) => {
+    
     setGenderSearch({ ...gendersearch, gender: e.target.value });
     setEmp([...empGender]);
+
+    
   };
 
   const [employee, setEmp] = useState(employeeArray)
@@ -68,7 +71,7 @@ function App() {
     if (gendersearch.gender.length < 0) {
       
       return employee
-    } else if (emp.gender.includes(gendersearch.gender)){
+    } else if (emp.gender.startsWith(gendersearch.gender)){
       console.log(emp.gender+gendersearch.gender);
       return emp
     } 
@@ -80,8 +83,12 @@ function App() {
      <Search empSearch={empSearch}/>
      <div className="container">
      <h5 className="text">Filter By Gender</h5>
+     <div className="FilterOptions">
     
      <DropDownButtons text="male" value="male" genSearch={genSearch} />
+     <DropDownButtons text="female" value="female" genSearch={genSearch} />
+     <DropDownButtons text="Refresh" value="" genSearch={() => window.location.reload(false)} />
+     </div>
      </div>
 
      <table className="table mx-auto">
