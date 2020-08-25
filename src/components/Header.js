@@ -1,5 +1,6 @@
 import React from 'react'
 
+//declaring header
 const Header = () => {
     return (
         <header className="jumbotron text-center text-light bg-primary">
