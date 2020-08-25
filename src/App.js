@@ -64,15 +64,15 @@ function App() {
     }
   });
 
-  const empGender= employee.filter(function (emp) {
-    if (gendersearch.gender.length < 0) {
+  // const empGender= employee.filter(function (emp) {
+  //   if (gendersearch.gender.length < 0) {
       
-      return employee
-    } else if (emp.gender.startsWith(gendersearch.gender)){
-      console.log(emp.gender+gendersearch.gender);
-      return emp
-    } 
-  });
+  //     return employee
+  //   } else if (emp.gender.startsWith(gendersearch.gender)){
+  //     console.log(emp.gender+gendersearch.gender);
+  //     return emp
+  //   } 
+  // });
   
   return (
     <div className="App">
